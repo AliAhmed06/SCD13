@@ -1,12 +1,14 @@
 "use client";
+import React, { useState } from "react";
+import { MdOutlineWbSunny } from "react-icons/md";
+import { IoMoon } from "react-icons/io5";
 import { useTheme } from "@/context/ThemeProvider";
-import React from "react";
-import { BsSun, BsMoon } from "react-icons/bs";
 
 const Theme = () => {
+  //   const [mode, setMode] = useState("light");
   const { mode, setMode } = useTheme();
 
-  const themeHandler = () => {
+  const handleTheme = () => {
     if (mode === "light") {
       setMode("dark");
       localStorage.setItem("theme", "dark");
@@ -15,11 +17,10 @@ const Theme = () => {
       localStorage.setItem("theme", "light");
     }
   };
-
   return (
     <div>
-      <button onClick={themeHandler}>
-        {mode === "light" ? <BsMoon size={25} /> : <BsSun size={25} />}
+      <button onClick={handleTheme}>
+        {mode === "light" ? <MdOutlineWbSunny /> : <IoMoon />}
       </button>
     </div>
   );
